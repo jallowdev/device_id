@@ -25,9 +25,9 @@ SizedBox showLogo() {
 }
 
 InputDecoration textInputDecoration(
-    String lableText, String hintText, Widget prefixIcon) {
+    String labelText, String hintText, Widget prefixIcon) {
   return InputDecoration(
-    labelText: lableText,
+    labelText: labelText,
     hintText: hintText,
     fillColor: Colors.white,
     filled: true,
@@ -35,16 +35,16 @@ InputDecoration textInputDecoration(
     contentPadding: EdgeInsets.fromLTRB(20, 10, 20, 10),
     focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(100.0),
-        borderSide: BorderSide(color: Colors.grey)),
+        borderSide: const BorderSide(color: Colors.grey)),
     enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(100.0),
         borderSide: BorderSide(color: Colors.grey.shade400)),
     errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(100.0),
-        borderSide: BorderSide(color: Colors.red, width: 2.0)),
+        borderSide: const BorderSide(color: Colors.red, width: 2.0)),
     focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(100.0),
-        borderSide: BorderSide(color: Colors.red, width: 2.0)),
+        borderSide: const BorderSide(color: Colors.red, width: 2.0)),
   );
 }
 
@@ -56,33 +56,4 @@ BoxDecoration inputBoxDecorationShaddow() {
       offset: const Offset(0, 5),
     )
   ]);
-}
-
-BoxDecoration buttonBoxDecoration(BuildContext context,
-    [String color1 = "", String color2 = ""]) {
-  Color c1 = Theme.of(context).primaryColor;
-  Color c2 = Theme.of(context).accentColor;
-  if (color1.isEmpty == false) {
-    // c1 = HexColor(color1);
-  }
-  if (color2.isEmpty == false) {
-    // c2 = HexColor(color2);
-  }
-
-  return BoxDecoration(
-    boxShadow: [
-      BoxShadow(color: Colors.black26, offset: Offset(0, 4), blurRadius: 5.0)
-    ],
-    gradient: LinearGradient(
-      begin: Alignment.topLeft,
-      end: Alignment.bottomRight,
-      stops: [0.0, 1.0],
-      colors: [
-        c1,
-        c2,
-      ],
-    ),
-    color: Colors.deepPurple.shade300,
-    borderRadius: BorderRadius.circular(30),
-  );
 }

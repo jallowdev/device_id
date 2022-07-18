@@ -1,7 +1,12 @@
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:diotali_deviceid_app/services/device_service.dart';
+import 'package:diotali_deviceid_app/services/models/response_dto.dart';
+import 'package:diotali_deviceid_app/services/models/user_login.dart';
+import 'package:diotali_deviceid_app/services/models/user_signup.dart';
 import 'package:get/get.dart';
 
 class DeviceController extends GetxController {
+  DeviceService service = DeviceService();
   DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
   RxString deviceId = "".obs;
 
@@ -9,6 +14,14 @@ class DeviceController extends GetxController {
   void onInit() {
     getDeviceId();
     super.onInit();
+  }
+
+  ResponseDto signUp(UserSignUp signUp) {
+    ResponseDto dto = ResponseDto("", "");
+    service.signUp(signUp).then((value) {
+      dto = value;
+    });
+    return dto;
   }
 
   getDeviceId() async {

@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:convert';
+import 'dart:convert' as convert;
 import 'dart:developer' as developer;
 import 'dart:io';
 
@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart';
+import 'package:http/retry.dart';
 
 class DeviceService {
   var baseUrl = "http://localhost:8082/devices/create";
@@ -23,26 +24,27 @@ class DeviceService {
 
     if (response.statusCode == 200) {
       print('#### DATA ${response.data} ');
-      ResponseDto dto = ResponseDto.fromJson(response.data);
+      ResponseDto dto = ResponseDto.fromMap(response.data);
       print('#### DATA ${response.data} ');
     } else {
       print('#### Error ${response.statusCode} ');
     }
   }
 
-  void signUp(UserSignUp userSignUp) async {
+  Future<ResponseDto> signUp(UserSignUp userSignUp) async {
+    ResponseDto dto = ResponseDto("", "");
     try {
       final response = await dio.post(baseUrl, data: userSignUp.toMap());
       if (response.statusCode == 200) {
-        print('#### DATA ${response.data} ');
-        var jsonResponse = jsonDecode(response.data) as Map<String, dynamic>;
-        ResponseDto dto = ResponseDto.fromMap(jsonResponse);
-        print('#### DTO ${dto} ');
+        var map = response.data as Map<String, dynamic>;
+        dto = ResponseDto.fromMap(map);
+        print('#### DATA  ${dto} ');
       }
     } catch (error) {
       if (error is DioError) {
         print('#### Error ${error} ');
       }
     }
+    return dto;
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:diotali_deviceid_app/services/device_service.dart';
+import 'package:diotali_deviceid_app/services/models/user_signup.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'dart:io';
@@ -10,9 +11,9 @@ import 'package:dio/dio.dart' as dio;
 
 class DeviceProvider extends GetConnect {
   var baseUrl = "https://jsonplaceholder.typicode.com/posts";
-
-  Future<Response> getUser(String url) {
-    var response = get('https://jsonplaceholder.typicode.com/posts');
+  var baseUrl1 = "http://localhost:8082/devices/create";
+  Future<Response> saveUser(UserSignUp user) {
+    var response = post(baseUrl1, user.toMap());
     response.then((value) {
       if (value.statusCode == 200) {
         print('#### Values ${value.body} ');
@@ -26,7 +27,7 @@ class DeviceProvider extends GetConnect {
   @override
   void onInit() {
     httpClient.baseUrl = baseUrl;
-    //getUser(baseUrl!);
+    //save(baseUrl!);
     //getDio();
     super.onInit();
   }

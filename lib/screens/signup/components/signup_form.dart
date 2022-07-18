@@ -1,7 +1,11 @@
 import 'package:diotali_deviceid_app/commons/commons.dart';
+import 'package:diotali_deviceid_app/services/controller/device_controller.dart';
+import 'package:diotali_deviceid_app/services/controller/device_provider.dart';
 import 'package:diotali_deviceid_app/services/device_service.dart';
+import 'package:diotali_deviceid_app/services/models/response_dto.dart';
 import 'package:diotali_deviceid_app/services/models/user_login.dart';
 import 'package:diotali_deviceid_app/services/models/user_signup.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -23,6 +27,8 @@ class SignUpForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final DeviceService service = DeviceService();
+    final DeviceController controller = Get.find();
+    final DeviceProvider provider = Get.find();
     return Form(
       key: _formKey,
       child: Column(
@@ -86,14 +92,26 @@ class SignUpForm extends StatelessWidget {
                   } else {
                     userSignUp.deviceType = 'MOBILE';
                   }
-                  service.signUp(userSignUp);
-                  print('#### SIGNUP :${userSignUp}');
-                  ScaffoldMessenger.of(context).showSnackBar(
+                  //service.signUp(userSignUp);
+                  service.signUp(userSignUp).then(
+                    (value) {
+                      if (value.operationMessage.isNotEmpty &&
+                          value.operationStatus.isNotEmpty) {
+                        if (kDebugMode) {
+                          print('#### SIGNUP DTO :${value}');
+                        }
+                        return value;
+                      }
+                      return value;
+                    },
+                  );
+
+                  /* ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text('Validation en cours'),
                       backgroundColor: dGreen,
                     ),
-                  );
+                  ); */
                 }
               },
               label: const Text(
