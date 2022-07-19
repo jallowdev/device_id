@@ -1,4 +1,4 @@
-import 'package:diotali_deviceid_app/commons/commons.dart';
+import 'package:tfe_deviceid_app/commons/commons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -6,11 +6,21 @@ const dOrange = Color(0xFFf06f2f);
 const buttonSize = 220.0;
 const inputSize = 400.0;
 
+const BASE_URL = 'http://localhost:8082/devices';
+
 double getButtonSizeByType() {
   if (GetPlatform.isMobile) {
     return buttonSize - 50;
   } else {
     return buttonSize;
+  }
+}
+
+double getInputSizeByType() {
+  if (GetPlatform.isMobile) {
+    return inputSize - 50;
+  } else {
+    return inputSize;
   }
 }
 

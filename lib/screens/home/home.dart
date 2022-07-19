@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'package:diotali_deviceid_app/commons/commons.dart';
-import 'package:diotali_deviceid_app/screens/home/components/redirect_button.dart';
-import 'package:diotali_deviceid_app/services/controller/device_controller.dart';
+import 'package:tfe_deviceid_app/commons/commons.dart';
+import 'package:tfe_deviceid_app/screens/home/components/redirect_button.dart';
+import 'package:tfe_deviceid_app/services/controller/device_controller.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -39,7 +39,7 @@ class Home extends StatelessWidget {
   }
 
   showTitle() {
-    return Text(
+    return SelectableText(
       GetPlatform.isAndroid
           ? 'Android numéro unique '
           : GetPlatform.isIOS

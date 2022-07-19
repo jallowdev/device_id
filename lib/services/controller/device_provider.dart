@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:diotali_deviceid_app/services/device_service.dart';
-import 'package:diotali_deviceid_app/services/models/user_signup.dart';
+import 'package:tfe_deviceid_app/services/device_service.dart';
+import 'package:tfe_deviceid_app/services/models/user_signup.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'dart:io';

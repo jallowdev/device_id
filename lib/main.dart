@@ -1,9 +1,9 @@
-import 'package:diotali_deviceid_app/screens/home/components/not_found_screen.dart';
-import 'package:diotali_deviceid_app/screens/home/home.dart';
-import 'package:diotali_deviceid_app/screens/login/login.dart';
-import 'package:diotali_deviceid_app/screens/signup/signup.dart';
-import 'package:diotali_deviceid_app/screens/success/success.dart';
-import 'package:diotali_deviceid_app/services/controller/device_provider.dart';
+import 'package:tfe_deviceid_app/screens/home/components/not_found_screen.dart';
+import 'package:tfe_deviceid_app/screens/home/home.dart';
+import 'package:tfe_deviceid_app/screens/login/login.dart';
+import 'package:tfe_deviceid_app/screens/signup/signup.dart';
+import 'package:tfe_deviceid_app/screens/success/success.dart';
+import 'package:tfe_deviceid_app/services/controller/device_provider.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 

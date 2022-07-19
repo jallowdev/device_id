@@ -1,7 +1,7 @@
-import 'package:diotali_deviceid_app/commons/commons.dart';
-import 'package:diotali_deviceid_app/screens/signup/components/signup_form.dart';
-import 'package:diotali_deviceid_app/services/controller/device_controller.dart';
-import 'package:diotali_deviceid_app/services/models/user_signup.dart';
+import 'package:tfe_deviceid_app/commons/commons.dart';
+import 'package:tfe_deviceid_app/screens/signup/components/signup_form.dart';
+import 'package:tfe_deviceid_app/services/controller/device_controller.dart';
+import 'package:tfe_deviceid_app/services/models/user_signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';

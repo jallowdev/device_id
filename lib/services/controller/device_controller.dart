@@ -1,14 +1,16 @@
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:diotali_deviceid_app/services/device_service.dart';
-import 'package:diotali_deviceid_app/services/models/response_dto.dart';
-import 'package:diotali_deviceid_app/services/models/user_login.dart';
-import 'package:diotali_deviceid_app/services/models/user_signup.dart';
+import 'package:tfe_deviceid_app/services/device_service.dart';
+import 'package:tfe_deviceid_app/services/models/response_dto.dart';
+import 'package:tfe_deviceid_app/services/models/user_login.dart';
+import 'package:tfe_deviceid_app/services/models/user_signup.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 class DeviceController extends GetxController {
   DeviceService service = DeviceService();
   DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
   RxString deviceId = "".obs;
+  late FToast fToast;
 
   @override
   void onInit() {

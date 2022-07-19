@@ -1,10 +1,10 @@
-import 'package:diotali_deviceid_app/commons/commons.dart';
-import 'package:diotali_deviceid_app/services/controller/device_controller.dart';
-import 'package:diotali_deviceid_app/services/controller/device_provider.dart';
-import 'package:diotali_deviceid_app/services/device_service.dart';
-import 'package:diotali_deviceid_app/services/models/response_dto.dart';
-import 'package:diotali_deviceid_app/services/models/user_login.dart';
-import 'package:diotali_deviceid_app/services/models/user_signup.dart';
+import 'package:tfe_deviceid_app/commons/commons.dart';
+import 'package:tfe_deviceid_app/services/controller/device_controller.dart';
+import 'package:tfe_deviceid_app/services/controller/device_provider.dart';
+import 'package:tfe_deviceid_app/services/device_service.dart';
+import 'package:tfe_deviceid_app/services/models/response_dto.dart';
+import 'package:tfe_deviceid_app/services/models/user_login.dart';
+import 'package:tfe_deviceid_app/services/models/user_signup.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,7 +34,7 @@ class SignUpForm extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-            width: inputSize,
+            width: getInputSizeByType(),
             child: TextFormField(
               decoration: textInputDecoration(
                   'Login agent', 'son login', Icon(Icons.account_circle)),
@@ -50,7 +50,7 @@ class SignUpForm extends StatelessWidget {
           ),
           const SizedBox(height: 10.0),
           Container(
-            width: inputSize,
+            width: getInputSizeByType(),
             child: TextFormField(
               decoration: textInputDecoration(
                   'Login', 'votre login', Icon(Icons.account_circle)),
@@ -66,7 +66,7 @@ class SignUpForm extends StatelessWidget {
           ),
           const SizedBox(height: 10.0),
           Container(
-            width: inputSize,
+            width: getInputSizeByType(),
             child: TextFormField(
                 obscureText: true,
                 decoration: textInputDecoration(
@@ -97,21 +97,29 @@ class SignUpForm extends StatelessWidget {
                     (value) {
                       if (value.operationMessage.isNotEmpty &&
                           value.operationStatus.isNotEmpty) {
-                        if (kDebugMode) {
-                          print('#### SIGNUP DTO :${value}');
+                        print('#### SIGNUP DTO :${value}');
+                        if (value.operationStatus == 'SUCCESS') {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('${value.operationMessage}'),
+                              backgroundColor: dGreen,
+                            ),
+                          );
+                          Get.toNamed('/login');
+                        }
+                        if (value.operationStatus == 'ERROR') {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('${value.operationMessage}'),
+                              backgroundColor: dOrange,
+                            ),
+                          );
                         }
                         return value;
                       }
                       return value;
                     },
                   );
-
-                  /* ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Validation en cours'),
-                      backgroundColor: dGreen,
-                    ),
-                  ); */
                 }
               },
               label: const Text(
@@ -127,15 +135,6 @@ class SignUpForm extends StatelessWidget {
                 color: Colors.white,
               ),
               backgroundColor: dGreen,
-            ),
-          ),
-          TextButton(
-            onPressed: () => Get.toNamed('/login'),
-            child: const Text(
-              'Login',
-              style: TextStyle(
-                color: dGreen,
-              ),
             ),
           ),
         ],

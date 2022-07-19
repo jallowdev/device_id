@@ -1,4 +1,4 @@
-name: diotali_deviceid_app
+name: tfe_deviceid_app
 description: Diotali.
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
@@ -16,7 +16,7 @@ dependencies:
   device_info_plus: ^4.0.0
   get: ^4.6.5
   dio: ^4.0.6
-  http: ^0.13.4
+  fluttertoast: ^8.0.9
 
 dev_dependencies:
   flutter_test:

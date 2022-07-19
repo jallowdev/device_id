@@ -20,10 +20,10 @@ class UserLogin {
       );
 
   Map<String, dynamic> toMap() => {
-        "login": login == null ? null : login,
+        "username": login == null ? null : login,
         "password": password == null ? null : password,
         "deviceId": deviceId == null ? null : deviceId,
-        "deviceType": deviceType == null ? null : deviceType,
+        "type": deviceType == null ? null : deviceType,
       };
 
   String toString() {

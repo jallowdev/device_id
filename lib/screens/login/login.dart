@@ -1,13 +1,13 @@
-import 'package:diotali_deviceid_app/commons/commons.dart';
-import 'package:diotali_deviceid_app/screens/login/components/login_form.dart';
-import 'package:diotali_deviceid_app/services/controller/device_controller.dart';
+import 'package:tfe_deviceid_app/commons/commons.dart';
+import 'package:tfe_deviceid_app/screens/login/components/login_form.dart';
+import 'package:tfe_deviceid_app/services/controller/device_controller.dart';
 
-import 'package:diotali_deviceid_app/services/models/user_login.dart';
+import 'package:tfe_deviceid_app/services/models/user_login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:matcher/matcher.dart';
+
 
 class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
@@ -35,7 +35,7 @@ class Login extends StatelessWidget {
                   formKey: _formKey,
                   userLogin: userLogin,
                   context: context,
-                  diviseId: controller.deviceId.value),
+                  controller: controller),
             ],
           ),
         ),
